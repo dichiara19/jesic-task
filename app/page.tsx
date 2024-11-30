@@ -252,7 +252,7 @@ const FinancialTechEventPage = () => {
       <section className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-            Programma della Giornata
+            Programma della giornata
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12">
@@ -334,7 +334,7 @@ const FinancialTechEventPage = () => {
           {/* Links e Social */}
           <div className="grid md:grid-cols-4 gap-8 mb-8 text-left">
             <div>
-              <h4 className="text-white font-semibold mb-4">Chi Siamo</h4>
+              <h4 className="text-white font-semibold mb-4">Chi siamo</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-blue-400 transition">La nostra storia</a></li>
                 <li><a href="#" className="hover:text-blue-400 transition">Team</a></li>
