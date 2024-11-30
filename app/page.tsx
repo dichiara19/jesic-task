@@ -5,19 +5,22 @@ import {
   TrendingUp, Zap, Clock, Award, 
   Users, DollarSign, ChevronDown, 
   Code, Cpu, Database, Layers,
-  Coffee, BookOpen, Target, Glasses, Check
+  Coffee, BookOpen, Target, Glasses, Check, 
+  Menu, X
 } from 'lucide-react';
 
 const AnimatedBackground = () => {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null); // fix: use a non-null type
 
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = canvasRef.current as HTMLCanvasElement;
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const particles = [];
+    const particles: Particle[] = [];
     const particleCount = 100;
 
     class Particle {
@@ -84,6 +87,7 @@ const AnimatedBackground = () => {
 
 const FinancialTechEventPage = () => {
   const [activeSection, setActiveSection] = useState('evento');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const techSections = [
     {
@@ -119,7 +123,17 @@ const FinancialTechEventPage = () => {
             <DollarSign className="w-10 h-10 text-blue-400" />
             <span className="text-2xl font-bold text-white">UniFinanza Tech</span>
           </div>
-          <nav className="flex space-x-6">
+          
+          {/* Menu hamburger per mobile */}
+          <button 
+            className="lg:hidden text-white"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+
+          {/* Menu desktop */}
+          <nav className="hidden lg:flex space-x-6">
             {['Evento', 'Tecnologie', 'Iscrizione'].map((section) => (
               <button 
                 key={section}
@@ -130,6 +144,37 @@ const FinancialTechEventPage = () => {
               </button>
             ))}
           </nav>
+
+          {/* Menu mobile offcanvas */}
+          <div className={`
+            fixed top-0 right-0 h-full w-64 bg-gray-900
+            transform transition-transform duration-300 ease-in-out
+            ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}
+            lg:hidden
+          `}>
+            <div className="flex justify-end p-4">
+              <button 
+                onClick={() => setIsMenuOpen(false)}
+                className="text-white"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <nav className="flex flex-col space-y-4 p-4 bg-gray-900">
+              {['Evento', 'Tecnologie', 'Iscrizione'].map((section) => (
+                <button 
+                  key={section}
+                  onClick={() => {
+                    setActiveSection(section.toLowerCase());
+                    setIsMenuOpen(false);
+                  }}
+                  className="hover:text-blue-300 transition-colors text-left"
+                >
+                  {section}
+                </button>
+              ))}
+            </nav>
+          </div>
         </div>
       </header>
 
@@ -243,6 +288,62 @@ const FinancialTechEventPage = () => {
                   Registrandoti accetti i nostri Termini e Condizioni e la nostra Privacy Policy
                 </p>
               </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsor */ }
+      <section className="py-16 bg-gray-900">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+            Sponsor
+          </h2>
+
+          <div className="flex flex-wrap justify-center items-center gap-12">
+            <div className="w-48 h-24 bg-gray-800 rounded-lg flex flex-col items-center justify-center p-6 hover:bg-gray-700 transition-colors">
+              <img 
+                src="/sponsors/mediolanum.png" 
+                alt="Mediolanum"
+                className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <span className="text-gray-400 text-sm mt-2">Mediolanum</span>
+            </div>
+
+            <div className="w-48 h-24 bg-gray-800 rounded-lg flex flex-col items-center justify-center p-6 hover:bg-gray-700 transition-colors">
+              <img 
+                src="/sponsors/intesa.png"
+                alt="Intesa San Paolo"
+                className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <span className="text-gray-400 text-sm mt-2">Intesa San Paolo</span>
+            </div>
+
+            <div className="w-48 h-24 bg-gray-800 rounded-lg flex flex-col items-center justify-center p-6 hover:bg-gray-700 transition-colors">
+              <img 
+                src="/sponsors/unicredit.png"
+                alt="UniCredit"
+                className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <span className="text-gray-400 text-sm mt-2">UniCredit</span>
+            </div>
+
+            <div className="w-48 h-24 bg-gray-800 rounded-lg flex flex-col items-center justify-center p-6 hover:bg-gray-700 transition-colors">
+              <img 
+                src="/sponsors/fineco.png"
+                alt="Fineco"
+                className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <span className="text-gray-400 text-sm mt-2">Fineco</span>
+            </div>
+
+            <div className="w-48 h-24 bg-gray-800 rounded-lg flex flex-col items-center justify-center p-6 hover:bg-gray-700 transition-colors">
+              <img 
+                src="/sponsors/generali.png"
+                alt="Generali"
+                className="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <span className="text-gray-400 text-sm mt-2">Generali</span>
             </div>
           </div>
         </div>
