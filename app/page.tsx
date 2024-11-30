@@ -328,6 +328,52 @@ const FinancialTechEventPage = () => {
         </div>
       </section>
 
+      {/* Testimonianze */}
+      <section className="py-16 bg-gray-800/30 backdrop-blur-sm">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Le voci dei partecipanti</h2>
+            <p className="text-gray-400">Scopri le esperienze di chi ha partecipato alle edizioni precedenti</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+              <div className="flex flex-col items-center mb-6">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 mb-4"></div>
+                <h4 className="text-xl font-semibold">Marco Bianchi</h4>
+                <p className="text-gray-400">Studente di economia</p>
+              </div>
+              <p className="text-gray-300 italic">
+                "Un'esperienza formativa incredibile. Ho acquisito competenze pratiche che non avrei mai potuto imparare solo dai libri. Il business game è stato illuminante!"
+              </p>
+            </div>
+
+            <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+              <div className="flex flex-col items-center mb-6">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-r from-green-500 to-teal-500 mb-4"></div>
+                <h4 className="text-xl font-semibold">Laura Rossi</h4>
+                <p className="text-gray-400">Neolaureata in finanza</p>
+              </div>
+              <p className="text-gray-300 italic">
+                "Gli speaker sono stati eccezionali e il networking finale mi ha permesso di stabilire contatti preziosi. Ora lavoro proprio in una delle aziende partner dell'evento!"
+              </p>
+            </div>
+
+            <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+              <div className="flex flex-col items-center mb-6">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-r from-yellow-500 to-red-500 mb-4"></div>
+                <h4 className="text-xl font-semibold">Andrea Verdi</h4>
+                <p className="text-gray-400">Studente di informatica</p>
+              </div>
+              <p className="text-gray-300 italic">
+                "La fusione tra finanza e tecnologia presentata durante l'evento mi ha aperto gli occhi su nuove opportunità di carriera. Assolutamente consigliato!"
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* Footer */}
       <footer className="bg-gray-900 border-t border-gray-700 py-12">
         <div className="container mx-auto px-4">
